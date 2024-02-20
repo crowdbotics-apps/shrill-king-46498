@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { View, Text, TextInput } from "react-native";
 import { OptionsContext } from "@options";
-
 /**
  * A custom input component for text entry.
  * @param {Object} props - The props object containing various properties for customization.
@@ -14,30 +13,23 @@ import { OptionsContext } from "@options";
  * @param {boolean} props.editable - Determines if the input is editable (default: true).
  * @returns {JSX.Element} - The Input component.
  */
-const Input = (props) => {
-  const { styles } = useContext(OptionsContext);
 
-  const { placeholder, value, setValue, multiline, editable, errorText } =
-    props;
-  return (
-    <View style={[styles.textInputContainer, props.styles]}>
-      <TextInput
-        style={styles.inputStyles}
-        placeholder={placeholder}
-        value={value}
-        onChangeText={(num) => setValue(num)}
-        placeholderTextColor="#ddd"
-        multiline={multiline}
-        numberOfLines={multiline ? 10 : null}
-        editable={editable !== false}
-      />
-      {errorText
-        ? (
-        <Text style={styles.textInputError}>{errorText}</Text>
-          )
-        : null}
-    </View>
-  );
+const Input = props => {
+  const {
+    styles
+  } = useContext(OptionsContext);
+  const {
+    placeholder,
+    value,
+    setValue,
+    multiline,
+    editable,
+    errorText
+  } = props;
+  return <View style={[styles.textInputContainer, props.styles]}>
+      <TextInput style={styles.inputStyles} placeholder={placeholder} value={value} onChangeText={num => setValue(num)} placeholderTextColor="#ddd" multiline={multiline} numberOfLines={multiline ? 10 : null} editable={editable !== false} />
+      {errorText ? <Text style={styles.textInputError}>{errorText}</Text> : null}
+    </View>;
 };
 
 export default Input;

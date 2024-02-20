@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-
 const styles = StyleSheet.create({
   tab: {
     backgroundColor: "#F1F1F1",
@@ -372,18 +371,15 @@ const styles = StyleSheet.create({
     textDecorationLine: "underline"
   }
 });
-
 const ANDROID_CLIENT_ID = "ANDROID_CLIENT_ID";
 const IOS_CLIENT_ID = "IOS_CLIENT_ID";
 const WEB_CLIENT_ID = "WEB_CLIENT_ID";
-const SCOPES_STRING =
-  "https://www.googleapis.com/auth/calendar,https://www.googleapis.com/auth/calendar.events,https://www.googleapis.com/auth/drive,https://www.googleapis.com/auth/drive.file";
+const SCOPES_STRING = "https://www.googleapis.com/auth/calendar,https://www.googleapis.com/auth/calendar.events,https://www.googleapis.com/auth/drive,https://www.googleapis.com/auth/drive.file";
 const CREATE_SHARED_FOLDER = false;
 const CREATE_HUBSPOT_CONTACT = false;
 const CREATE_HUBSPOT_DEAL = false;
 const CREATE_SLACK_CHANNEL = false;
 const SLACK_ADMIN_CREDENTIALS = "ADMIN_CREDS";
-
 export default {
   ANDROID_CLIENT_ID: ANDROID_CLIENT_ID,
   IOS_CLIENT_ID: IOS_CLIENT_ID,

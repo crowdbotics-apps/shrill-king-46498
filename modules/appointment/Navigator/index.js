@@ -1,5 +1,4 @@
 import React from "react";
-
 import { createStackNavigator } from "@react-navigation/stack";
 import CreateAppointment from "../screens/createAppointment";
 import Appointments from "../screens/appointments";

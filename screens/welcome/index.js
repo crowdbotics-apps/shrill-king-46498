@@ -1,64 +1,79 @@
-import { Switch } from "react-native";
-import { ActivityIndicator } from "react-native";
-import React from "react";
-import { View, Image, Text, ScrollView, SafeAreaView, StyleSheet } from "react-native";
+plaintext;
+import React, { useState } from "react";
+import { SafeAreaView, StyleSheet, View, TextInput, Button, Text, Platform, TouchableOpacity } from "react-native";
+import DateTimePicker from "@react-native-community/datetimepicker";
 
-const WelcomeScreen = () => {
+const LoginScreen = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState(new Date());
+  const [showDatePicker, setShowDatePicker] = useState(false);
+
+  const handleLogin = () => {
+    console.log("Login pressed", {
+      username,
+      password,
+      dateOfBirth
+    });
+  };
+
+  const onChangeDate = (event, selectedDate) => {
+    const currentDate = selectedDate || dateOfBirth;
+    setShowDatePicker(Platform.OS === "ios");
+    setDateOfBirth(currentDate);
+  };
+
+  const showDatepicker = () => {
+    setShowDatePicker(true);
+  };
+
   return <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollView}>
-        <View style={styles.group} />
-        <View style={styles.group}>
-          <Image style={styles.logo} source={require("./logo.png")} />
-          <Text style={styles.text}>
-            Let's build something amazing together!
-          </Text>
-        </View>
-        <Text style={styles.footer}>Made with ❤️ by Crowdbotics</Text>
-      <ActivityIndicator style={styles.YJwVFshW}></ActivityIndicator><Switch style={styles.PfBibAOp}></Switch></ScrollView>
+      <View style={styles.inputContainer}>
+        <TextInput placeholder="Username" value={username} onChangeText={setUsername} style={styles.input} />
+        <TextInput placeholder="Password" value={password} onChangeText={setPassword} secureTextEntry style={styles.input} />
+        <TouchableOpacity onPress={showDatepicker} style={styles.datePickerButton}>
+          <Text style={styles.datePickerText}>Date of Birth: {dateOfBirth.toLocaleDateString()}</Text>
+        </TouchableOpacity>
+        {showDatePicker && <DateTimePicker testID="dateTimePicker" value={dateOfBirth} mode="date" display="default" onChange={onChangeDate} />}
+        <Button title="Login" onPress={handleLogin} />
+      </View>
+      <Text style={styles.footer}>Made with ❤️ by Crowdbotics</Text>
     </SafeAreaView>;
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#F8F8FC",
-    height: "100%"
-  },
-  scrollView: {
     flex: 1,
+    justifyContent: "center",
     alignItems: "center",
-    justifyContent: "space-between",
-    padding: 20
+    backgroundColor: "#F8F8FC"
   },
-  group: {
-    alignItems: "center"
+  inputContainer: {
+    width: "80%"
   },
-  logo: {
-    height: 180,
-    width: 180,
-    padding: 40,
-    borderRadius: 30,
-    margin: 40
+  input: {
+    height: 40,
+    marginVertical: 10,
+    borderWidth: 1,
+    borderColor: "#828AB0",
+    borderRadius: 5,
+    paddingHorizontal: 10
   },
-  text: {
-    textAlign: "center",
-    fontSize: 28,
-    color: "#828AB0",
-    fontWeight: 700
+  datePickerButton: {
+    marginVertical: 10,
+    padding: 10,
+    backgroundColor: "#DDD",
+    borderRadius: 5
+  },
+  datePickerText: {
+    textAlign: "center"
   },
   footer: {
+    position: "absolute",
+    bottom: 20,
     textAlign: "center",
     fontSize: 18,
-    color: "#828AB0",
-    fontWeight: 700,
-    marginBottom: 20
-  },
-  YJwVFshW: {
-    width: 50,
-    height: 50
-  },
-  PfBibAOp: {
-    width: 152,
-    height: 25
+    color: "#828AB0"
   }
 });
-export default WelcomeScreen;
+export default LoginScreen;

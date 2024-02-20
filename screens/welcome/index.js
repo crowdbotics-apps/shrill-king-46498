@@ -1,3 +1,5 @@
+import { Switch } from "react-native";
+import { ActivityIndicator } from "react-native";
 import React from "react";
 import { View, Image, Text, ScrollView, SafeAreaView, StyleSheet } from "react-native";
 
@@ -12,7 +14,7 @@ const WelcomeScreen = () => {
           </Text>
         </View>
         <Text style={styles.footer}>Made with ❤️ by Crowdbotics</Text>
-      </ScrollView>
+      <ActivityIndicator style={styles.YJwVFshW}></ActivityIndicator><Switch style={styles.PfBibAOp}></Switch></ScrollView>
     </SafeAreaView>;
 };
 
@@ -49,6 +51,14 @@ const styles = StyleSheet.create({
     color: "#828AB0",
     fontWeight: 700,
     marginBottom: 20
+  },
+  YJwVFshW: {
+    width: 50,
+    height: 50
+  },
+  PfBibAOp: {
+    width: 152,
+    height: 25
   }
 });
 export default WelcomeScreen;

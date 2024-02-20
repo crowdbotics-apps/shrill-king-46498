@@ -11,7 +11,6 @@ import { OptionsContext } from "@options";
  * @param {ReactNode} children - The content to be displayed inside the button.
  * @returns {JSX.Element} - The Button component.
  */
-
 const Button = ({
   onPress,
   disabled = false,
@@ -20,21 +19,28 @@ const Button = ({
   color = "#ffffff",
   children
 }) => {
-  const {
-    styles
-  } = useContext(OptionsContext);
+  const { styles } = useContext(OptionsContext);
+
   const buttonStyle = {
     backgroundColor: backgroundColor,
     height: height
   };
+
   const textStyle = {
     color: color
   };
-  return <TouchableHighlight onPress={onPress} disabled={disabled} underlayColor="#DDDDDD">
+
+  return (
+    <TouchableHighlight
+      onPress={onPress}
+      disabled={disabled}
+      underlayColor="#DDDDDD"
+    >
       <View style={[styles.buttonView, buttonStyle]}>
         <Text style={[styles.buttonTitle, textStyle]}>{children}</Text>
       </View>
-    </TouchableHighlight>;
+    </TouchableHighlight>
+  );
 };
 
 export default Button;

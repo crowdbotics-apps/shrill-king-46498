@@ -1,4 +1,5 @@
 const baseUrlGoogle = "https://www.googleapis.com/calendar/v3/calendars";
+
 export const getAppointmentByDate = async (accessToken, maxResults = 100, datetime) => {
   try {
     const response = await fetch(`${baseUrlGoogle}/primary/events?showDeleted=false&orderBy=startTime&singleEvents=true&maxResults=${maxResults}&timeMin=${datetime}`, {
@@ -57,6 +58,7 @@ export const createSlackChannel = async (baseUrl, accessToken, data) => {
     throw new Error("NETWORK_ERROR").message;
   }
 };
+
 export const createGoogleFolder = async (baseUrl, accessToken, data) => {
   try {
     const response = await fetch(`${baseUrl}/modules/drive/service/create/folder/`, {
@@ -72,6 +74,7 @@ export const createGoogleFolder = async (baseUrl, accessToken, data) => {
     throw new Error("NETWORK_ERROR").message;
   }
 };
+
 export const createHubSpotContact = async (baseUrl, data) => {
   try {
     const response = await fetch(`${baseUrl}/modules/hubspot/service/create-contact/`, {
@@ -86,6 +89,7 @@ export const createHubSpotContact = async (baseUrl, data) => {
     throw new Error("NETWORK_ERROR").message;
   }
 };
+
 export const createHubSpotDeal = async (baseUrl, data) => {
   try {
     const response = await fetch(`${baseUrl}/modules/hubspot/service/deals/create/`, {
